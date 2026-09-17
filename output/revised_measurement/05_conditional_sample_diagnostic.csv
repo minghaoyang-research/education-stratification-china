@@ -1,0 +1,9 @@
+"quantity","observed","conditional_reference","matches_conditional_reference"
+"historical_analytic_n",1646,1646,TRUE
+"syntax_analytic_n",1650,1650,TRUE
+"historical_urban_n",928,928,TRUE
+"syntax_urban_n",932,932,TRUE
+"historical_bachelor_n",806,806,TRUE
+"syntax_bachelor_n",810,810,TRUE
+"historical_missing_to_syntax_mapped",4,4,TRUE
+"historical_mapped_to_syntax_missing",0,0,TRUE
