@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+
+message: "If you use or refer to this repository, please cite it using the metadata below."
+
+title: "Education, Social Origin and Occupational Status in China"
+
+type: software
+
+authors:
+  - family-names: "Yang"
+    given-names: "Minghao"
+
+version: "1.0-original-reproduction"
+
+date-released: "2026-09-18"
+
+repository-code: "https://github.com/minghaoyang-research/education-stratification-china"
+
+abstract: >-
+  R reproduction of an undergraduate sociology dissertation using the
+  2017 China General Social Survey. The repository reconstructs and validates
+  the submitted SPSS workflow before later measurement and modelling
+  revisions are introduced in separate scripts.
+
+keywords:
+  - sociology
+  - social stratification
+  - higher education
+  - occupational status
+  - CGSS
+  - reproducibility
+  - R
