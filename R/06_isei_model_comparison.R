@@ -1991,6 +1991,13 @@ identity_checks <- data.frame(
 # STAGE06_FINAL_PATCH: frozen Stage 05 input provenance
 # ------------------------------------------------------------
 
+prov_file <- "output/revised_measurement/05_package_provenance.csv"
+
+stop_check(
+  file.exists(prov_file),
+  paste0("Missing Stage 05 provenance artifact: ", prov_file)
+)
+
 expected_stage05_mapping_md5 <- "ecbcc94d75d0f074ca05b625a95e5913"
 expected_stage05_provenance_md5 <- "7a85ebcb48bbd3565041e4f1d04d86be"
 
