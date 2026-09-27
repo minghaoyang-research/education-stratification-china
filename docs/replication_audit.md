@@ -33,7 +33,7 @@ I have not used the raw variable count alone as a provenance check because softw
 
 The historical syntax used here is:
 
-`archive/cgss2017_analysis_v4.sps`
+`archive/cgss2017_analysis_4.sps`
 
 Its MD5 is:
 

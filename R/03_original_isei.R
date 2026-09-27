@@ -7,7 +7,7 @@
 #   used in the submitted dissertation.
 #
 # Historical specification:
-#   archive/cgss2017_analysis_v4.sps
+#   archive/cgss2017_analysis_4.sps
 #
 # Workflow:
 #   1. Rebuild Stage 01 and Stage 02 from source.
@@ -72,7 +72,7 @@ near_display <- function(x, target, digits) {
 # ------------------------------------------------------------
 
 v4_syntax_file <-
-  "archive/cgss2017_analysis_v4.sps"
+  "archive/cgss2017_analysis_4.sps"
 
 stopifnot(
   file.exists(v4_syntax_file)

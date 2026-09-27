@@ -69,7 +69,7 @@ The raw data directory is excluded from Git.
 The final SPSS syntax is archived at:
 
 ```text
-archive/cgss2017_analysis_v4.sps
+archive/cgss2017_analysis_4.sps
 ```
 
 ## Running the reproduction
