@@ -1,2 +1,0 @@
-"N_persons","N_ISCO_codes","intercept","slope","R2","historical_mean","syntax_mean","overview_mean","syntax_sd","overview_sd","residual_mean","max_lm_vs_direct_residual_difference","max_relative_orthogonality"
-1646,247,10.6162891649129,0.724783510309458,0.841257382422695,51.9842041312272,56.3670959902795,51.4702308626974,17.9590195459262,14.1914405752258,-3.64364134921585e-13,1.50131018727961e-11,6.46000681843487e-14
