@@ -134,11 +134,18 @@ for (v in names(fits)) {
   )
 }
 
-save_csv(sparse_cell, "07_model6_sparse_cell.csv")
+# Keep the diagnostics internally, but do not publish the outcome range
+# for a cell with fewer than five respondents.
+sparse_cell_public <- sparse_cell
+small_cell <- sparse_cell_public$N_pg_cohort1 < 5
+sparse_cell_public$cell_outcome_min[small_cell] <- NA_real_
+sparse_cell_public$cell_outcome_max[small_cell] <- NA_real_
+
+save_csv(sparse_cell_public, "07_model6_sparse_cell.csv")
 print(
-  sparse_cell[, c("version", "N_pg_cohort1", "leverage_ratio",
-                  "mean_hc3_adj", "max_abs_studentized_residual",
-                  "max_cooks_distance")],
+  sparse_cell_public[, c("version", "N_pg_cohort1", "leverage_ratio",
+                         "mean_hc3_adj", "max_abs_studentized_residual",
+                         "max_cooks_distance")],
   row.names = FALSE
 )
 

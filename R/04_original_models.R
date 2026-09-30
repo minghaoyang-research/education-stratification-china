@@ -210,6 +210,8 @@ table7$education_label <- c("Junior college", "Bachelor", "Postgraduate")[table7
 
 # 5. Joint F tests for the interaction blocks ----
 
+# SPSS did not print these joint tests. The reference values below follow
+# from the residual sums of squares in the final SPSS ANOVA tables.
 a34 <- anova(models$Model3, models$Model4)
 a56 <- anova(models$Model5, models$Model6)
 nested_tests <- data.frame(

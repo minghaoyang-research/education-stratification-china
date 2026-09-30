@@ -63,7 +63,7 @@ The cohort results are consistent with credential inflation, but the cross-secti
 
 ## What the reproduction checks
 
-Stages 01 to 04 are checked against the final SPSS output. Sample counts, residual degrees of freedom and table cell counts have to match exactly. Coefficients and classical standard errors are checked against the final SPSS output, along with the available fit and VIF benchmarks. Models 1 to 7, Tables 6, 7 and A1, and the classical interaction-block tests all reproduce the submitted analysis.
+Stages 01 to 04 are checked against the SPSS outputs retained with the project. The intermediate sample-flow counts are checked against the 19 April diagnostic run, while the final model and table benchmarks come from the 12 April 18:31 output. Residual degrees of freedom and table cell counts have to match exactly. Coefficients and classical standard errors are checked against the final output, along with the available fit and VIF benchmarks. Models 1 to 7 and Tables 6, 7 and A1 reproduce the submitted analysis. The two joint interaction-block F tests were added during the R reproduction and are documented in `docs/replication_audit.md`.
 
 The estimate-by-estimate comparison also found two reporting discrepancies in the submitted dissertation. Neither changes the fitted models or the substantive conclusions. Both are recorded in [`docs/replication_audit.md`](docs/replication_audit.md).
 
@@ -85,11 +85,11 @@ Stage 06 fits the same seven models under five fixed versions.
 
 The three `_common` versions contain the same respondents in the same order, so those comparisons isolate changes in the outcome measure. The two `_full` versions add the four recovered ISCO 1000 cases. Stage 06 keeps the dissertation-style classical standard errors and adds HC3 alongside them. Its `historical_common` fits are checked back against the Stage 04 coefficients, fit statistics and VIFs before the revised versions are compared.
 
-Under the `syntax` and `overview` mappings, the female coefficient stands out. It changes sign in all seven models, so Stage 07 traces where that shift comes from.
+The female coefficient is especially sensitive to crosswalk choice. It is positive under the historical and `syntax` scores but negative under `overview` in all seven models, so Stage 07 examines that syntax-to-overview shift.
 
 On the 1,646-person common sample, `overview` is approximately a compressed version of `syntax`, with a slope of 0.725 and R² of about 0.841. After removing that common rescaling, the occupation-specific part of the female-coefficient shift is about -2.79 across Models 1 to 7. Stage 07 attributes that remainder back to ISCO codes. The ranked contributions are in `07_female_isco_residual_top_contributions.csv`. Cells with fewer than five respondents are pooled in the public contribution tables.
 
-Stage 07 also compares classical and HC3 inference for the two-person postgraduate-by-1957-1964 cell in Model 6.
+Stage 07 also compares classical and HC3 inference in Model 6, where the oldest-cohort postgraduate cell contains only two respondents. The resulting leverage makes the two variance estimators diverge sharply, so I treat Model 6 inference as unstable rather than use either version as substantive evidence. Outcome summaries for cells with fewer than five respondents are suppressed in the public Stage 06 and 07 CSV outputs.
 
 ## Data and measures
 

@@ -1,7 +1,7 @@
 "version","cohort","cohort_label","edu_lvl","education","n","mean_y","sd_y"
 "historical_common",1,"1957-64",1,"junior_college",108,52.1203703703704,16.3659765564598
 "historical_common",1,"1957-64",2,"bachelor",60,58.2666666666667,14.9721398521191
-"historical_common",1,"1957-64",3,"postgraduate",2,70,0
+"historical_common",1,"1957-64",3,"postgraduate",2,,
 "historical_common",2,"1965-74",1,"junior_college",174,50.7298850574713,16.0775405399365
 "historical_common",2,"1965-74",2,"bachelor",139,54.0719424460432,16.2773249804261
 "historical_common",2,"1965-74",3,"postgraduate",21,64.5238095238095,11.3164439980899
@@ -13,7 +13,7 @@
 "historical_common",4,"1985-92",3,"postgraduate",67,59.9850746268657,15.5363625645378
 "syntax_common",1,"1957-64",1,"junior_college",108,55.9267592592593,18.1091187763897
 "syntax_common",1,"1957-64",2,"bachelor",60,63.9723333333333,15.5910759314604
-"syntax_common",1,"1957-64",3,"postgraduate",2,70.34,0
+"syntax_common",1,"1957-64",3,"postgraduate",2,,
 "syntax_common",2,"1965-74",1,"junior_college",174,55.9085057471264,17.2141143210549
 "syntax_common",2,"1965-74",2,"bachelor",139,60.305035971223,18.0697630525156
 "syntax_common",2,"1965-74",3,"postgraduate",21,71.3980952380952,11.415615453863
@@ -25,7 +25,7 @@
 "syntax_common",4,"1985-92",3,"postgraduate",67,65.3891044776119,15.8728619873902
 "overview_common",1,"1957-64",1,"junior_college",108,51.6666666666667,14.2008292505004
 "overview_common",1,"1957-64",2,"bachelor",60,58.7833333333333,13.765704949924
-"overview_common",1,"1957-64",3,"postgraduate",2,70,0
+"overview_common",1,"1957-64",3,"postgraduate",2,,
 "overview_common",2,"1965-74",1,"junior_college",174,50.6379310344828,13.2373158079229
 "overview_common",2,"1965-74",2,"bachelor",139,55.2805755395683,14.9283451702266
 "overview_common",2,"1965-74",3,"postgraduate",21,63.7619047619048,9.26771148614782
@@ -37,7 +37,7 @@
 "overview_common",4,"1985-92",3,"postgraduate",67,58.0597014925373,13.270930406303
 "syntax_full",1,"1957-64",1,"junior_college",108,55.9267592592593,18.1091187763897
 "syntax_full",1,"1957-64",2,"bachelor",60,63.9723333333333,15.5910759314604
-"syntax_full",1,"1957-64",3,"postgraduate",2,70.34,0
+"syntax_full",1,"1957-64",3,"postgraduate",2,,
 "syntax_full",2,"1965-74",1,"junior_college",174,55.9085057471264,17.2141143210549
 "syntax_full",2,"1965-74",2,"bachelor",140,60.3394285714286,18.0092447790807
 "syntax_full",2,"1965-74",3,"postgraduate",21,71.3980952380952,11.415615453863
@@ -49,7 +49,7 @@
 "syntax_full",4,"1985-92",3,"postgraduate",67,65.3891044776119,15.8728619873902
 "overview_full",1,"1957-64",1,"junior_college",108,51.6666666666667,14.2008292505004
 "overview_full",1,"1957-64",2,"bachelor",60,58.7833333333333,13.765704949924
-"overview_full",1,"1957-64",3,"postgraduate",2,70,0
+"overview_full",1,"1957-64",3,"postgraduate",2,,
 "overview_full",2,"1965-74",1,"junior_college",174,50.6379310344828,13.2373158079229
 "overview_full",2,"1965-74",2,"bachelor",140,55.3285714285714,14.8853860335888
 "overview_full",2,"1965-74",3,"postgraduate",21,63.7619047619048,9.26771148614782

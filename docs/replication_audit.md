@@ -330,7 +330,7 @@ The revised mappings score the four ISCO 1000 cases that the historical recode l
 
 Stage 06 refits Models 1 to 7 under those five fixed versions. Common-support comparisons change the ISEI measurement while holding respondents and design matrices fixed; the full versions additionally show what happens when the four recovered cases are included.
 
-Stage 07 follows up the sparse Model 6 cell, the compression between the two revised ISEI scales and the sensitivity of the female coefficient to the crosswalk. HC3 standard errors are used here as a later diagnostic; they do not replace the classical standard errors in the submitted models.
+Stage 07 follows up the sparse Model 6 cell, the compression between the two revised ISEI scales and the sensitivity of the female coefficient to the crosswalk. HC3 standard errors are used here as a later diagnostic; they do not replace the classical standard errors in the submitted models. In Model 6 the oldest-cohort postgraduate cell has very high leverage, and classical and HC3 inference diverge sharply. I therefore treat inference from that model as unstable. Outcome summaries for cells with fewer than five respondents are suppressed in the public Stage 06 and 07 CSV outputs.
 
 Nothing in Stages 05 to 07 is fed back into Stages 01 to 04.
 

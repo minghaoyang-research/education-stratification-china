@@ -264,12 +264,13 @@ cohort_education_descriptives <- do.call(rbind, lapply(names(versions), function
   do.call(rbind, lapply(seq_len(nrow(cells)), function(i) {
     ii <- d$cohort == cells$cohort[i] & d$edu_lvl == cells$edu_lvl[i]
     y <- d$.y[ii]
+    n_cell <- sum(ii)
     data.frame(version = v,
                cohort = cells$cohort[i], cohort_label = cohort_labels[cells$cohort[i]],
                edu_lvl = cells$edu_lvl[i], education = edu_names[cells$edu_lvl[i]],
-               n = sum(ii),
-               mean_y = if (sum(ii) > 0) mean(y) else NA,
-               sd_y = if (sum(ii) > 1) sd(y) else NA)
+               n = n_cell,
+               mean_y = if (n_cell >= 5) mean(y) else NA_real_,
+               sd_y = if (n_cell >= 5) sd(y) else NA_real_)
   }))
 }))
 
