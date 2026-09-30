@@ -68,7 +68,7 @@ The verified reproduction was run under R 4.4.3. The required packages are `have
 install.packages(c("haven", "ISCO08ConveRsions", "sandwich", "lmtest", "car"))
 ```
 
-Versions recorded during the revised work include `ISCO08ConveRsions` 0.2.0, `sandwich` 3.1-1 and `lmtest` 0.9-40.
+The revised audit was run with `haven` 2.5.5, `ISCO08ConveRsions` 0.2.0, `sandwich` 3.1.1, `lmtest` 0.9.40 and `car` 3.1.5.
 
 Open `education-stratification-china.Rproj` and put the SAV in place. Stage 04 rebuilds the submitted analysis on its own.
 
@@ -145,7 +145,7 @@ Parental education uses `A89B` and `A90B`. The analysis takes the higher availab
 
 ## Status
 
-Stages 01 to 07 are frozen. `docs/session_info.txt` records the environment used for the original reproduction.
+Stages 01 to 07 are frozen. `docs/session_info.txt` records the original reproduction environment, and `docs/session_info_revised.txt` records the environment used for Stages 05 to 07.
 
 ## Author
 
