@@ -1,5 +1,7 @@
 # ISEI Measurement Audit Plan
 
+This document was written before Stage 05 was run and is kept as a record of the planned audit. The final implementation is documented in [`replication_audit.md`](replication_audit.md).
+
 ## Purpose
 
 The historical reproduction in Stages 01 to 04 is frozen at `v1.0-original-reproduction`.

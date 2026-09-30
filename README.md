@@ -2,7 +2,7 @@
 
 This repository rebuilds my undergraduate sociology dissertation in R and then audits it. The dissertation used the 2017 wave of the Chinese General Social Survey to examine whether urban-rural inequality among respondents reporting higher education shows up mainly in the qualifications people hold or in their occupational positions after education and family background are taken into account. Stages 01 to 04 reproduce the SPSS analysis I submitted at the University of Edinburgh. Stages 05 to 07 were added afterwards to check the ISEI coding, sample coverage and statistical inference.
 
-The dissertation sample contains 1,646 respondents aged 25 to 60 who reported junior college or above and had a valid current or recent non-farm occupation. The submitted sample was defined from A7A and did not add a separate graduation restriction from A7B. Occupational status is measured with ISEI-08 and the submitted analysis uses a sequence of unweighted OLS models with classical standard errors.
+The dissertation sample contains 1,646 respondents aged 25 to 60 who reported junior college or above and had a valid current or most recent non-farm occupation. The submitted sample was defined from A7A and did not add a separate graduation restriction from A7B. Occupational status is measured with ISEI-08 and the submitted analysis uses a sequence of unweighted OLS models with classical standard errors.
 
 Respondent-level CGSS records are not redistributed here. See [Getting the data](#getting-the-data) before running the scripts.
 
@@ -93,7 +93,7 @@ Stage 07 also compares classical and HC3 inference in Model 6, where the oldest-
 
 ## Data and measures
 
-The reproduction sample covers respondents aged 25 to 60 whose reported highest education level in A7A was junior college or above and who had a valid current or recent non-farm occupation.
+The reproduction sample covers respondents aged 25 to 60 whose reported highest education level in A7A was junior college or above and who had a valid current or most recent non-farm occupation.
 
 A7B was not used as an additional graduation filter in the submitted analysis. In the historical N = 1,646 sample, 1,610 respondents are coded as graduated in A7B; the others are recorded as currently studying, having left before graduation, incomplete, or unknown.
 
