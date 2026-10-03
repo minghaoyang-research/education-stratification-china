@@ -1,6 +1,6 @@
 # 01 Import CGSS 2017 data
 #
-# 12 variables from the 19 Apr 2026 diagnostic run are removed here
+# archived diagnostic fields are removed before rebuilding the analysis
 
 library(haven)
 
@@ -17,8 +17,7 @@ if (!identical(unname(tools::md5sum(raw_file)), archive_md5)) {
 
 raw <- read_sav(raw_file, user_na = TRUE)
 
-# analytic_sample from that run has 1649 cases; thesis sample has 1646
-# 02-03 rebuild the final sample from the survey items
+# Stages 02-03 rebuild the analytic sample from the survey items
 diagnostic_vars <- c(
   "step1_pass", "step2_pass", "step3_pass", "age_2017",
   "has_occ", "occ_code", "isei_unmappable", "origin_miss",
