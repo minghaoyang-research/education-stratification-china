@@ -12,9 +12,6 @@ authors:
   - family-names: "Yang"
     given-names: "Minghao"
 
-version: "1.1.0"
-
-date-released: "2026-10-01"
 
 repository-code: "https://github.com/minghaoyang-research/education-stratification-china"
 
