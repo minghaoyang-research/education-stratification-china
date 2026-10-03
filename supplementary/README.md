@@ -1,10 +1,8 @@
-# Supplementary analyses
+# Supplementary measurement sensitivity and model diagnostics
 
-This directory contains follow-up work completed after the dissertation reproduction.
+These analyses were completed after the dissertation reproduction. They compare the dissertation's historical occupational-status recode with two documented alternative ISCO-08-to-ISEI-08 mappings, rerun Models 1–7 under controlled sample definitions, and add model diagnostics. They are kept separate so the submitted analysis and the later methodological checks remain easy to distinguish.
 
-The main reproduction is in `R/01_import_validate.R` through `R/04_original_models.R`. Those four scripts rebuild the submitted SPSS analysis and are sufficient for the project described in the root README.
-
-The material here records later sensitivity checks and diagnostics, including alternative occupational-status mappings, model sensitivity checks and additional diagnostics. It is kept separate so the submitted analysis and the later exploratory work remain easy to distinguish.
+Stage 05 compares the three occupational-status mappings. Stage 06 holds the original 1,646 respondents fixed in the common-support versions and also reports full-coverage versions (N = 1,650), which include four ISCO 1000 cases scored by the alternative mappings. In Model 3, the bachelor, postgraduate and rural-origin coefficients remain positive and statistically significant across mappings; the female coefficient is more sensitive to mapping choice. Stage 07 examines that sensitivity and additional model diagnostics.
 
 To rerun the supplementary work from the repository root, run the scripts in order:
 
