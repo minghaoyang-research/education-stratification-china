@@ -18,7 +18,7 @@ stage3_dat$final_original_flag <- with(
 analysis_original <- stage3_dat[stage3_dat$final_original_flag, , drop = FALSE]
 stopifnot(nrow(analysis_original) == 1646)
 
-# check against the 12 Apr SPSS output
+# quick check against the 12 Apr SPSS output
 stopifnot(
   round(mean(analysis_original$isei), 4) == 51.9842,
   round(sd(analysis_original$isei), 5) == 16.34346,
@@ -27,6 +27,34 @@ stopifnot(
 )
 
 dir.create("output/original_replication", recursive = TRUE, showWarnings = FALSE)
+
+# ISCO codes present in the Stage-3 sample
+map_used <- unique(data.frame(
+  isco_main = stage3_dat$isco_main,
+  isei_original = stage3_dat$isei
+))
+map_used <- map_used[order(map_used$isco_main), ]
+
+isco_n <- table(stage3_dat$isco_main)
+map_used$n_stage3 <- as.integer(isco_n[as.character(map_used$isco_main)])
+
+write.csv(
+  map_used,
+  "output/original_replication/isei_codes_used.csv",
+  row.names = FALSE
+)
+
+unmapped <- sort(unique(stage3_dat$isco_main[is.na(stage3_dat$isei)]))
+unmapped_out <- data.frame(
+  isco_main = unmapped,
+  n_stage3 = as.integer(isco_n[as.character(unmapped)])
+)
+
+write.csv(
+  unmapped_out,
+  "output/original_replication/unmapped_isco_codes.csv",
+  row.names = FALSE
+)
 
 # education x origin check against the SPSS table
 cell_n <- with(analysis_original, table(edu_lvl, rural_origin))
