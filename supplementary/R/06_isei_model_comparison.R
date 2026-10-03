@@ -4,9 +4,9 @@
 source("R/03_original_isei.R")
 
 rep_dir <- "output/original_replication"
-out_dir <- "output/isei_model_comparison"
-map_file <- "output/revised_measurement/05_code_level_mapping_audit.csv"
-prov_file <- "output/revised_measurement/05_package_provenance.csv"
+out_dir <- "supplementary/output/isei_model_comparison"
+map_file <- "supplementary/output/revised_measurement/05_code_level_mapping_audit.csv"
+prov_file <- "supplementary/output/revised_measurement/05_package_provenance.csv"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 

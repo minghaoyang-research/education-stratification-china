@@ -7,7 +7,7 @@
 library(ISCO08ConveRsions)
 source("R/03_original_isei.R")   # brings in stage3_dat
 
-out_dir <- "output/revised_measurement"
+out_dir <- "supplementary/output/revised_measurement"
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 

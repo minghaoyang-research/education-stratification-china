@@ -86,7 +86,7 @@ education-stratification-china.Rproj
 
 `cgss2017_analysis_4.sps` is the final dissertation syntax retained with the project. `tools/make_isei_map.R` extracts the ISEI lookup used by that syntax into `archive/isei_map_4.csv`, which Stage 03 reads.
 
-Stages 01–04 are sufficient to rebuild the submitted analysis. Additional follow-up scripts are retained in the repository but are not required for the reproduction.
+Stages 01–04 are sufficient to rebuild the submitted analysis. Additional follow-up material is kept under `supplementary/` and is not required for the reproduction.
 
 ## Running it
 

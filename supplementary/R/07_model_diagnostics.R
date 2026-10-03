@@ -6,7 +6,7 @@
 library(sandwich)
 library(lmtest)
 
-source("R/06_isei_model_comparison.R")
+source("supplementary/R/06_isei_model_comparison.R")
 
 out_dir  <- "output/model_diagnostics"
 plot_dir <- file.path(out_dir, "plots")
