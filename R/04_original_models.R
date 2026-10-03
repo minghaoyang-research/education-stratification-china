@@ -44,7 +44,7 @@ model_rhs <- list(
   Model7 = c(common_terms, "age", "par_edu_yrs", "rural_origin_f")
 )
 
-d <- analysis_dat
+d <- analysis_original
 
 # Interaction terms used in Models 4 and 6. The education and cohort dummies
 # are already created in Stage 02; the interactions belong with the models.
