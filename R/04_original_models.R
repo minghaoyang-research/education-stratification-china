@@ -244,3 +244,5 @@ outputs <- list(
 for (nm in names(outputs)) {
   write.csv(outputs[[nm]], file.path(out_dir, paste0(nm, ".csv")), row.names = FALSE)
 }
+
+cat("04_original_models.R: ALL CHECKS PASSED\n")
