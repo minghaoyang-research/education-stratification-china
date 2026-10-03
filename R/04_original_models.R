@@ -5,8 +5,6 @@
 # submitted unweighted specifications and classical standard errors.
 # I check R against the final SPSS v4 output as printed: most values are
 # shown to 3 decimals, while the Table 7 means are shown to 4.
-# Later scripts compare alternative ISEI mappings and add HC3 standard errors.
-
 source("R/03_original_isei.R")
 
 # SPSS only gives the displayed decimals, so I compare within half of the
@@ -46,7 +44,7 @@ model_rhs <- list(
   Model7 = c(common_terms, "age", "par_edu_yrs", "rural_origin_f")
 )
 
-d <- analysis_original
+d <- analysis_dat
 
 # Interaction terms used in Models 4 and 6. The education and cohort dummies
 # are already created in Stage 02; the interactions belong with the models.
