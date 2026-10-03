@@ -1,13 +1,13 @@
-# 05 Check the ISEI crosswalk
+# 05 ISEI sensitivity check
 #
 # Compare the ISEI scores from my dissertation with the two mappings in
-# ISCO08ConveRsions before running the revised models in Stage 06.
+# ISCO08ConveRsions before comparing the models in Stage 06.
 # isco08toisei08() is the main mapping, _2 is the older-table sensitivity check
 
 library(ISCO08ConveRsions)
 source("R/03_original_isei.R")   # brings in stage3_dat
 
-out_dir <- "supplementary/output/revised_measurement"
+out_dir <- "supplementary/output/isei_sensitivity"
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 
