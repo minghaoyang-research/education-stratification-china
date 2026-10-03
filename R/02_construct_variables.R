@@ -115,7 +115,7 @@ recode_parent_education <- function(x) {
   out[x %in% c(9, 10)] <- 15         # junior college
   out[x %in% c(11, 12)] <- 16        # bachelor
   out[x == 13] <- 19                 # postgraduate
-  out[x == 14] <- 9                  # "other", kept as in dissertation
+  out[x == 14] <- 9                  # coding used in the dissertation
 
   out
 }
