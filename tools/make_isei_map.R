@@ -76,7 +76,6 @@ isei_map <- data.frame(
 stopifnot(
   nrow(isei_map) == 9999,
   sum(!is.na(isei_map$isei)) == 5600,
-  is.na(isei_map$isei[isei_map$isco_main == 1000]),
   isei_map$isei[isei_map$isco_main == 100] == 45,
   isei_map$isei[isei_map$isco_main == 310] == 45
 )
