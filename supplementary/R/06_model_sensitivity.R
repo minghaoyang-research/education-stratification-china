@@ -5,7 +5,7 @@ source("R/03_original_isei.R")
 
 rep_dir <- "output/original_replication"
 out_dir <- "supplementary/output/model_sensitivity"
-map_file <- "supplementary/output/isei_sensitivity/05_code_level_mapping_audit.csv"
+map_file <- "supplementary/output/isei_sensitivity/05_code_level_mapping.csv"
 prov_file <- "supplementary/output/isei_sensitivity/05_package_provenance.csv"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
@@ -299,7 +299,7 @@ fit_contrast <- function(old_v, new_v, name) {
   z
 }
 
-# measurement, crosswalk choice, coverage, then old vs preferred new
+# measurement choice and sample coverage contrasts
 coefficient_contrasts <- rbind(
   coef_contrast("historical_common", "syntax_common", "measurement"),
   coef_contrast("syntax_common", "overview_common", "crosswalk_choice"),

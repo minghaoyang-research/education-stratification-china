@@ -54,7 +54,7 @@ code_map$abs_overview_minus_syntax <- abs(code_map$overview_minus_syntax)
 code_map$person_weighted_abs_hist_syntax <- code_map$n_core * code_map$abs_syntax_minus_historical
 code_map$person_weighted_abs_syntax_overview <- code_map$n_core * code_map$abs_overview_minus_syntax
 
-# match the two revised scores back to respondents
+# match the two alternative scores back to respondents
 i <- match(dat$isco4, code_map$isco4)
 dat$isei_syntax <- code_map$isei_syntax[i]
 dat$isei_overview <- code_map$isei_overview[i]
@@ -178,7 +178,7 @@ pkg_info <- data.frame(
 )
 
 # 06 reads the first two files, the rest are for checking
-write.csv(code_map, file.path(out_dir, "05_code_level_mapping_audit.csv"), row.names = FALSE, na = "")
+write.csv(code_map, file.path(out_dir, "05_code_level_mapping.csv"), row.names = FALSE, na = "")
 write.csv(pkg_info, file.path(out_dir, "05_package_provenance.csv"), row.names = FALSE, na = "")
 
 write.csv(score_summary, file.path(out_dir, "05_score_summary.csv"), row.names = FALSE)
