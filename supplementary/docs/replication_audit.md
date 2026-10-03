@@ -342,11 +342,11 @@ Aggregate reproduction results are written to:
 
 The later audit writes aggregate or code-level results to:
 
-`output/revised_measurement/`
+`supplementary/output/revised_measurement/`
 
-`output/isei_model_comparison/`
+`supplementary/output/isei_model_comparison/`
 
-`output/model_diagnostics/`
+`supplementary/output/model_diagnostics/`
 
 No respondent-level CGSS data are exported by these stages.
 
@@ -354,4 +354,4 @@ No respondent-level CGSS data are exported by these stages.
 
 Stages 01 to 07 are complete and frozen. Stages 01 to 04 remain the historical reproduction; Stages 05 to 07 are the separate post-submission audit.
 
-`docs/session_info.txt` records the original reproduction environment. `docs/session_info_revised.txt` records the environment used for Stages 05 to 07.
+`docs/session_info.txt` records the original reproduction environment. `supplementary/docs/session_info_revised.txt` records the environment used for Stages 05 to 07.

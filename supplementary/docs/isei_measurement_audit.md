@@ -92,7 +92,7 @@ Several occupational codes also matter because they combine a sizeable score dif
 
 The largest occupational cell is not automatically the most influential one. ISCO 4110 has 149 common support cases, but its score changes only from 45 to 43.33.
 
-Full code-level results and the person-weighted ranking are stored in `output/revised_measurement/`.
+Full code-level results and the person-weighted ranking are stored in `supplementary/output/revised_measurement/`.
 
 ## Is the measurement change related to education or rural origin?
 
@@ -124,7 +124,7 @@ Stage 05 stops here. It does not estimate a revised occupational model.
 
 ## Files produced
 
-The measurement audit writes its results to `output/revised_measurement/`. The outputs include coverage checks, pairwise comparisons, occupational code differences, major group summaries and grouped measurement diagnostics.
+The measurement audit writes its results to `supplementary/output/revised_measurement/`. The outputs include coverage checks, pairwise comparisons, occupational code differences, major group summaries and grouped measurement diagnostics.
 
 The respondent-level CGSS data are not exported.
 
