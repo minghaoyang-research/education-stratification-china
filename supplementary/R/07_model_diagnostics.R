@@ -6,9 +6,9 @@
 library(sandwich)
 library(lmtest)
 
-source("R/06_isei_model_comparison.R")
+source("supplementary/R/06_model_sensitivity.R")
 
-out_dir  <- "output/model_diagnostics"
+out_dir  <- "supplementary/output/model_diagnostics"
 plot_dir <- file.path(out_dir, "plots")
 dir.create(plot_dir, recursive = TRUE, showWarnings = FALSE)
 

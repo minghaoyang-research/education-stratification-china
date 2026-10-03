@@ -1,12 +1,12 @@
-# 06 Models 1-7 under the revised ISEI mappings
+# 06 Models 1-7 under alternative ISEI mappings
 # the three common versions use the same 1646 cases, the _full ones add the 4 ISCO 1000 cases
 
 source("R/03_original_isei.R")
 
 rep_dir <- "output/original_replication"
-out_dir <- "output/isei_model_comparison"
-map_file <- "output/revised_measurement/05_code_level_mapping_audit.csv"
-prov_file <- "output/revised_measurement/05_package_provenance.csv"
+out_dir <- "supplementary/output/model_sensitivity"
+map_file <- "supplementary/output/isei_sensitivity/05_code_level_mapping.csv"
+prov_file <- "supplementary/output/isei_sensitivity/05_package_provenance.csv"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -25,7 +25,7 @@ vcov_hc3 <- function(fit) sandwich::vcovHC(fit, type = "HC3")
 
 # scores and samples ----
 
-if (!file.exists(map_file)) stop("run 05_isei_crosswalk_audit.R first")
+if (!file.exists(map_file)) stop("run 05_isei_sensitivity.R first")
 
 mapping <- read.csv(map_file)
 stopifnot(!anyDuplicated(mapping$isco_numeric))
@@ -299,7 +299,7 @@ fit_contrast <- function(old_v, new_v, name) {
   z
 }
 
-# measurement, crosswalk choice, coverage, then old vs preferred new
+# measurement choice and sample coverage contrasts
 coefficient_contrasts <- rbind(
   coef_contrast("historical_common", "syntax_common", "measurement"),
   coef_contrast("syntax_common", "overview_common", "crosswalk_choice"),

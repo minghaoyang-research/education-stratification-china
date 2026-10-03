@@ -5,8 +5,6 @@
 # submitted unweighted specifications and classical standard errors.
 # I check R against the final SPSS v4 output as printed: most values are
 # shown to 3 decimals, while the Table 7 means are shown to 4.
-# Later scripts compare alternative ISEI mappings and add HC3 standard errors.
-
 source("R/03_original_isei.R")
 
 # SPSS only gives the displayed decimals, so I compare within half of the
@@ -246,3 +244,5 @@ outputs <- list(
 for (nm in names(outputs)) {
   write.csv(outputs[[nm]], file.path(out_dir, paste0(nm, ".csv")), row.names = FALSE)
 }
+
+cat("04_original_models.R: ALL CHECKS PASSED\n")

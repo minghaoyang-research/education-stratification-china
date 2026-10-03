@@ -12,18 +12,15 @@ authors:
   - family-names: "Yang"
     given-names: "Minghao"
 
-version: "1.1.0"
-
-date-released: "2026-10-01"
 
 repository-code: "https://github.com/minghaoyang-research/education-stratification-china"
 
 abstract: >-
-  R reproduction and post-submission audit of an undergraduate sociology
-  dissertation using the 2017 China General Social Survey. Stages 01 to 04
-  reconstruct and validate the submitted SPSS analysis. Stages 05 to 07
-  examine ISEI crosswalk choices, sample coverage and selected model
-  diagnostics while keeping the historical reproduction unchanged.
+  Reproducible R reconstruction of an undergraduate sociology dissertation
+  using the 2017 China General Social Survey. The repository rebuilds the
+  analytic sample and variables from the archived survey file, reproduces the
+  seven submitted OLS models, and validates the R results against retained
+  final SPSS output.
 
 keywords:
   - sociology
