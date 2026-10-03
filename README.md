@@ -2,7 +2,7 @@
 
 This repository contains the R reproduction of my undergraduate sociology dissertation at the University of Edinburgh. The original analysis was carried out in SPSS with the 2017 China General Social Survey (CGSS). I later returned to the archived data, syntax and output and rebuilt the analysis in R from the source SAV file rather than from a saved analytic sample.
 
-The dissertation asks where urban-rural inequality appears among people who reached higher education in China: in the qualifications they obtain, in occupational position after graduation, or both. Occupational position is measured with ISEI-08. The submitted analysis uses seven unweighted OLS models and a final analytic sample of 1,646 respondents.
+The dissertation asks where urban-rural inequality appears among people who reached higher education in China: in the qualifications they obtain, in occupational position once education and family background are taken into account, or both. Occupational position is measured with ISEI-08. The submitted analysis uses seven unweighted OLS models and a final analytic sample of 1,646 respondents.
 
 Respondent-level CGSS data are not redistributed here.
 
@@ -17,8 +17,6 @@ The analysis starts with 12,582 CGSS respondents. The sample is then restricted 
  1,674  valid current or most recent non-farm occupation
  1,646  final analytic sample
 ```
-
-The sample is rebuilt directly from the survey items. The old diagnostic sample flag stored in the archived working file is not used to define the 1,646 cases.
 
 Education is grouped into junior college, bachelor and postgraduate levels, with junior college as the reference category. The main origin measure comes from A27H, which records the type of place where the respondent's hukou was registered at age 14. Codes 1–2 are grouped as rural origin and codes 3–5 as urban origin. Model 7 repeats the main specification with A27F, place of residence at age 14.
 
