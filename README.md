@@ -1,25 +1,82 @@
 # Education, Social Origin and Occupational Status in China
 
-This repository rebuilds my undergraduate sociology dissertation in R and then audits it. The dissertation used the 2017 wave of the Chinese General Social Survey to examine whether urban-rural inequality among respondents reporting higher education shows up mainly in the qualifications people hold or in their occupational positions after education and family background are taken into account. Stages 01 to 04 reproduce the SPSS analysis I submitted at the University of Edinburgh. Stages 05 to 07 were added afterwards to check the ISEI coding, sample coverage and statistical inference.
+Reproducible R reconstruction of an undergraduate quantitative sociology dissertation using the 2017 China General Social Survey (CGSS).
 
-The dissertation sample contains 1,646 respondents aged 25 to 60 who reported junior college or above and had a valid current or most recent non-farm occupation. The submitted sample was defined from A7A and did not add a separate graduation restriction from A7B. Occupational status is measured with ISEI-08 and the submitted analysis uses a sequence of unweighted OLS models with classical standard errors.
+The project examines how higher-education attainment, social origin and birth cohort are associated with occupational status in China. The central question is whether urban-rural inequality among respondents who reached higher education is concentrated mainly in the qualifications they obtain or remains visible in occupational position after education and family background are taken into account.
 
-Respondent-level CGSS records are not redistributed here. See [Getting the data](#getting-the-data) before running the scripts.
+The submitted analysis was originally conducted in SPSS. This repository rebuilds the analytic sample from the archived CGSS source file, reconstructs the variables used in the dissertation, reproduces the seven OLS models in R, and validates the results against the retained final SPSS output.
 
-## Repository layout
+Respondent-level CGSS records are not redistributed here.
+
+## Research at a glance
+
+| Item | Design |
+|---|---|
+| Data | China General Social Survey 2017 |
+| Starting sample | 12,582 respondents |
+| Analytic sample | 1,646 respondents |
+| Age range | 25–60 |
+| Education | Junior college or above |
+| Outcome | ISEI-08 occupational status as coded in the submitted SPSS workflow |
+| Main predictors | Education level, rural origin, parental education, age / birth cohort, sex |
+| Method | Seven unweighted OLS models |
+| Original software | IBM SPSS |
+| Reproduction | R 4.4.3 |
+
+The analytic sample is rebuilt from the survey items rather than loaded from a saved sample flag. The main sample flow is:
+
+```text
+12,582  CGSS 2017 respondents
+ 2,470  junior college or above
+ 1,766  aged 25–60
+ 1,674  valid current or most recent non-farm occupation
+ 1,646  final submitted analytic sample
+```
+
+## Main findings
+
+Education is strongly associated with occupational position. In Model 3, with junior college as the reference category, the bachelor coefficient is **6.205 ISEI points** and the postgraduate coefficient is **15.899 points**.
+
+Within this higher-education sample, rural origin does not appear as a negative occupational-status gap after controls. The Model 3 rural-origin coefficient is **3.025 points** (SE = 0.833, p < .001). I do not interpret that estimate as a causal rural advantage: the analysis conditions on having reached higher education, so selection into the higher-education sample remains important.
+
+The education-by-origin interaction block is not jointly significant. At the same time, the education-by-origin cross-tabulation shows clear sorting across qualification levels: rural-origin respondents are more concentrated in junior college and less concentrated in the higher tiers.
+
+Later-born cohorts have lower occupational-status estimates in the cohort specification. Because all respondents are observed in the same 2017 cross-section, the analysis cannot cleanly separate cohort change from career-stage differences, so the cohort pattern is interpreted cautiously.
+
+Model 6, which adds education-by-cohort interactions, is retained as exploratory because the oldest-cohort postgraduate cell contains only two respondents and produces substantial multicollinearity. The substantive conclusions do not rely on that model.
+
+## Reproduction and validation
+
+Stages 01 to 04 form the core reproduction.
+
+The scripts rebuild the analysis from the archived SAV file and compare the R results directly with the retained final SPSS output. Structural quantities such as sample counts, residual degrees of freedom and table cell counts are checked exactly. Coefficients and classical standard errors are checked against the precision printed by SPSS, together with the available fit and VIF benchmarks.
+
+The reproduction validates:
+
+- the full sample-construction sequence;
+- the education, origin, cohort, parental-education and occupation variables;
+- the ISEI-08 scores used in the submitted workflow;
+- Models 1 to 7;
+- Table 6: education by urban-rural origin;
+- Table 7: mean ISEI by birth cohort and education level;
+- Appendix Table A1: education by birth cohort;
+- model fit and multicollinearity benchmarks available in the archived output.
+
+The R reconstruction also adds two joint interaction-block tests as transparent diagnostics:
+
+- education × rural origin: F(2, 1637) = 1.501, p = .223;
+- education × cohort: F(6, 1631) = 1.164, p = .323.
+
+These tests are calculated from the reproduced models and are not substituted for any statistic in the submitted dissertation.
+
+## Repository structure
 
 ```text
 R/
-  # reproduction of the submitted SPSS analysis
   01_import_validate.R
   02_construct_variables.R
   03_original_isei.R
   04_original_models.R
-
-  # post-submission audit
-  05_isei_crosswalk_audit.R
-  06_isei_model_comparison.R
-  07_model_diagnostics.R
 
 archive/
   cgss2017_analysis_4.sps
@@ -29,85 +86,46 @@ tools/
   make_isei_map.R
 
 data/raw/
-  CGSS2017.sav                  # not in Git
+  CGSS2017.sav                  # not tracked by Git
 
 output/
-  original_replication/         # stages 03-04
-  revised_measurement/          # stage 05
-  isei_model_comparison/        # stage 06
-  model_diagnostics/            # stage 07, with three figures under plots/
+  original_replication/
 
 docs/
-  replication_audit.md
   session_info.txt
-  session_info_revised.txt
 
 education-stratification-china.Rproj
 ```
 
-`cgss2017_analysis_4.sps` is the final dissertation syntax. `tools/make_isei_map.R` extracts the historical lookup into `archive/isei_map_4.csv`, which is what Stage 03 reads. Stages 05 to 07 do not feed revised choices back into the submitted reproduction.
+`cgss2017_analysis_4.sps` is the final dissertation syntax retained with the project. `tools/make_isei_map.R` extracts the occupational-status lookup used by that syntax into `archive/isei_map_4.csv`, which Stage 03 reads.
 
-## Models and tables
-
-The seven model specifications are fixed throughout the repository. Model 1 contains education, sex and age. Model 2 adds parental education. Model 3 adds the main origin measure. Model 4 adds education-by-origin interactions. Model 5 replaces age with birth-cohort indicators. Model 6 adds education-by-cohort interactions. Model 7 reruns Model 3 with the alternative age-14 residence measure.
-
-Table 6 is education by urban-rural origin. Table 7 reports mean ISEI by birth cohort and education level. Appendix Table A1 is education by birth cohort.
-
-## Summary of results
-
-Education remains strongly associated with occupational position. In Model 3, the bachelor coefficient is 6.205 ISEI points and the postgraduate coefficient is 15.899, with junior college as the reference category. The rural-origin coefficient is positive at 3.025 points (SE = 0.833, p < .001), the opposite sign from the rural penalty expected at the start of the project. I do not read that coefficient as evidence that rural origin itself produces an occupational advantage. The sample contains only people who reached higher education, and rural-origin respondents may have passed a stronger selection process on the way in.
-
-The education-by-origin interaction block is not statistically significant in the submitted model, while Table 6 shows clear sorting across education tiers. Rural-origin respondents are more concentrated in junior college and less concentrated in the higher tiers.
-
-The cohort results are consistent with credential inflation, but the cross-sectional design cannot separate cohort change from ordinary career progression. Model 6 stays in the appendix as exploratory because the postgraduate-by-1957-64 cell contains only two respondents and produces severe multicollinearity.
-
-## What the reproduction checks
-
-Stages 01 to 04 are checked against the SPSS outputs retained with the project. The intermediate sample-flow counts are checked against the 19 April diagnostic run, while the final model and table benchmarks come from the 12 April 18:31 output. Residual degrees of freedom and table cell counts have to match exactly. Coefficients and classical standard errors are checked against the final output, along with the available fit and VIF benchmarks. Models 1 to 7 and Tables 6, 7 and A1 reproduce the submitted analysis. The two joint interaction-block F tests were added during the R reproduction and are documented in `docs/replication_audit.md`.
-
-The estimate-by-estimate comparison also found two reporting discrepancies in the submitted dissertation. Neither changes the fitted models or the substantive conclusions. Both are recorded in [`docs/replication_audit.md`](docs/replication_audit.md).
-
-## What the audit found
-
-Stage 05 compares the dissertation ISEI coding with the two mappings used from `ISCO08ConveRsions`. I use `isco08toisei08()` as the main revised mapping and `isco08toisei08_2()` as a sensitivity check. Three-digit ISCO codes are zero-padded before the package functions are called.
-
-Valid origin and parental education are available for 1,650 respondents. The historical mapping leaves four ISCO 1000 cases without an ISEI score, so the submitted N is 1,646. Both revised mappings score those four cases. They are all urban-origin bachelor respondents.
-
-Stage 06 fits the same seven models under five fixed versions.
-
-| Version | N | ISEI mapping |
-|---|---:|---|
-| `historical_common` | 1,646 | dissertation SPSS recode |
-| `syntax_common` | 1,646 | `isco08toisei08()` |
-| `overview_common` | 1,646 | `isco08toisei08_2()` |
-| `syntax_full` | 1,650 | `isco08toisei08()` |
-| `overview_full` | 1,650 | `isco08toisei08_2()` |
-
-The three `_common` versions contain the same respondents in the same order, so those comparisons isolate changes in the outcome measure. The two `_full` versions add the four recovered ISCO 1000 cases. Stage 06 keeps the dissertation-style classical standard errors and adds HC3 alongside them. Its `historical_common` fits are checked back against the Stage 04 coefficients, fit statistics and VIFs before the revised versions are compared.
-
-The female coefficient is especially sensitive to crosswalk choice. It is positive under the historical and `syntax` scores but negative under `overview` in all seven models, so Stage 07 examines that syntax-to-overview shift.
-
-On the 1,646-person common sample, `overview` is approximately a compressed version of `syntax`, with a slope of 0.725 and R² of about 0.841. After removing that common rescaling, the occupation-specific part of the female-coefficient shift is about -2.79 across Models 1 to 7. Stage 07 attributes that remainder back to ISCO codes. The ranked contributions are in `07_female_isco_residual_top_contributions.csv`. Cells with fewer than five respondents are pooled in the public contribution tables.
-
-Stage 07 also compares classical and HC3 inference in Model 6, where the oldest-cohort postgraduate cell contains only two respondents. The resulting leverage makes the two variance estimators diverge sharply, so I treat Model 6 inference as unstable rather than use either version as substantive evidence. Outcome summaries for cells with fewer than five respondents are suppressed in the public Stage 06 and 07 CSV outputs.
+The portfolio reproduction is contained in Stages 01 to 04. Other scripts retained in the repository are supplementary project work and are not required to rebuild the submitted analysis.
 
 ## Data and measures
 
-The reproduction sample covers respondents aged 25 to 60 whose reported highest education level in A7A was junior college or above and who had a valid current or most recent non-farm occupation.
+The sample includes respondents aged 25 to 60 whose highest reported education in A7A is junior college or above and who have a valid current or most recent non-farm occupation.
 
-A7B was not used as an additional graduation filter in the submitted analysis. In the historical N = 1,646 sample, 1,610 respondents are coded as graduated in A7B; the others are recorded as currently studying, having left before graduation, incomplete, or unknown.
+Education is represented by junior college, bachelor and postgraduate categories, with junior college as the reference group.
 
-The main origin measure is CGSS variable `A27H`, which records the type of place where the respondent's hukou was registered at age 14. It is not a measure of agricultural versus non-agricultural hukou status. Codes 1 to 2 are grouped as rural origin and codes 3 to 5 as urban origin. Model 7 uses `A27F`, place of residence at age 14, with the same split.
+The main origin measure is based on A27H, the type of place where the respondent's hukou was registered at age 14. Codes 1–2 are grouped as rural origin and codes 3–5 as urban origin. Model 7 uses A27F, place of residence at age 14, with the same rural-urban grouping.
 
-Parental education uses `A89B` and `A90B`. The analysis takes the higher available parental education value after converting categories to approximate years of schooling. The reproduction keeps category 14 coded as 9 years because that is what the submitted workflow used.
+Parental education uses the higher available education level of either parent after conversion to approximate years of schooling.
 
-Stages 01 to 04 use unweighted OLS with classical model-based standard errors. HC3 appears only in Stages 06 and 07.
+Occupational status is the ISEI-08 outcome used in the submitted SPSS analysis. Stage 03 reconstructs those scores from the archived final syntax through the project lookup table, so the R reproduction targets the analysis that was actually submitted rather than substituting a different outcome definition.
+
+The submitted models use unweighted OLS with classical model-based standard errors, and the reproduction keeps that specification unchanged.
 
 ## Getting the data
 
-CGSS is run by the National Survey Research Center at Renmin University of China.
+CGSS is conducted by the National Survey Research Center at Renmin University of China.
 
-Place the archived SAV used for this project at `data/raw/CGSS2017.sav`. Stage 01 checks it against the fingerprint below.
+The respondent-level CGSS 2017 file is not redistributed in this repository. Place the archived SAV used for the reproduction at:
+
+```text
+data/raw/CGSS2017.sav
+```
+
+Stage 01 validates the archived source against the following fingerprint:
 
 ```text
 Cases       12,582
@@ -116,48 +134,49 @@ File size   26,231,277 bytes
 MD5         4933ebaa85a5d2e38c1a15aa5ae6c04e
 ```
 
-This fingerprint belongs to the exact SAV archived with the dissertation workflow. That file contains 12 variables left by a diagnostic run on 19 April 2026; Stage 01 removes them and works with the remaining 786 variables. The old `analytic_sample` flag is one of those discarded variables and is not used to define the dissertation sample.
+The archived working SAV contains 12 diagnostic variables created during the original workflow. Stage 01 removes those fields before analysis, leaving the 786 survey variables used to rebuild the sample.
 
-Because of those 12 added variables, a CGSS 2017 file obtained separately will not be byte-identical to this archive even when it holds the same respondents, and Stage 01 will stop on it. The check is written this way so that a different file is never treated as the reproduction source.
+The raw-data directory is excluded from Git.
 
-## Running the analysis
+## Running the reproduction
 
-The verified reproduction was run under R 4.4.3. The required packages are `haven`, `ISCO08ConveRsions`, `sandwich`, `lmtest` and `car`.
+The verified reproduction was run under R 4.4.3. The core reproduction requires `haven` to read the SPSS file; model estimation and validation otherwise rely mainly on base R.
 
 ```r
-install.packages(c("haven", "ISCO08ConveRsions", "sandwich", "lmtest", "car"))
+install.packages("haven")
 ```
 
-The revised audit was run with `haven` 2.5.5, `ISCO08ConveRsions` 0.2.0, `sandwich` 3.1.1, `lmtest` 0.9.40 and `car` 3.1.5.
-
-Open `education-stratification-china.Rproj` and put the SAV in place. Stage 04 rebuilds the submitted analysis on its own.
+Open `education-stratification-china.Rproj`, place the SAV file in `data/raw/`, and run:
 
 ```r
 source("R/04_original_models.R")
 ```
 
-Stage 04 sources 03, which sources 02 and then 01.
+Stage 04 sources Stages 03, 02 and 01 in sequence, so the complete analysis is rebuilt from the source SAV file.
 
-Rebuilding the audit as well takes three calls in order.
+A successful run ends with:
 
-```r
-source("R/04_original_models.R")
-source("R/05_isei_crosswalk_audit.R")
-source("R/07_model_diagnostics.R")
+```text
+04_original_models.R: ALL CHECKS PASSED
 ```
 
-Stage 05 sources Stage 03. Stage 06 also sources Stage 03, but it reads the Stage 04 reproduction outputs and the Stage 05 mapping and provenance files from disk, so 04 and 05 need to have been run first. Stage 07 sources Stage 06.
+Aggregate reproduction outputs are written to:
 
-No respondent-level analytic dataset is written out by these scripts. The audit outputs are aggregate summaries, model results, code-level mapping tables and diagnostic plots.
+```text
+output/original_replication/
+```
 
-## Status
+No respondent-level analytic dataset is written by the reproduction scripts.
 
-Stages 01 to 07 are frozen. `docs/session_info.txt` records the original reproduction environment, and `docs/session_info_revised.txt` records the environment used for Stages 05 to 07.
+## Reproducibility status
+
+The submitted SPSS analysis has been independently reconstructed in R and checked against the retained final output. The original reproduction baseline is preserved at the Git tag `v1.0-original-reproduction`.
 
 ## Author
 
 **Minghao Yang**
 
-MA (Hons) Sociology, University of Edinburgh
+MA (Hons) Sociology — First Class Honours  
+University of Edinburgh
 
 GitHub [@minghaoyang-research](https://github.com/minghaoyang-research)
