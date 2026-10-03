@@ -10,28 +10,28 @@ stage3_dat$isei <- as.numeric(isei_map$isei[m])
 
 stopifnot(sum(!is.na(stage3_dat$isei)) == 1670)
 
-stage3_dat$final_sample_flag <- with(
+stage3_dat$final_original_flag <- with(
   stage3_dat,
   !is.na(isei) & !is.na(rural_origin) & !is.na(par_edu_yrs)
 )
 
-analysis_dat <- stage3_dat[stage3_dat$final_sample_flag, , drop = FALSE]
-stopifnot(nrow(analysis_dat) == 1646)
+analysis_original <- stage3_dat[stage3_dat$final_original_flag, , drop = FALSE]
+stopifnot(nrow(analysis_original) == 1646)
 
 # check against the 12 Apr SPSS output
 stopifnot(
-  round(mean(analysis_dat$isei), 4) == 51.9842,
-  round(sd(analysis_dat$isei), 5) == 16.34346,
-  min(analysis_dat$isei) == 16,
-  max(analysis_dat$isei) == 88
+  round(mean(analysis_original$isei), 4) == 51.9842,
+  round(sd(analysis_original$isei), 5) == 16.34346,
+  min(analysis_original$isei) == 16,
+  max(analysis_original$isei) == 88
 )
 
 dir.create("output/original_replication", recursive = TRUE, showWarnings = FALSE)
 
 # education x origin check against the SPSS table
-cell_n <- with(analysis_dat, table(edu_lvl, rural_origin))
+cell_n <- with(analysis_original, table(edu_lvl, rural_origin))
 cell_mean <- with(
-  analysis_dat,
+  analysis_original,
   tapply(isei, list(edu_lvl, rural_origin), mean)
 )
 
